@@ -8,7 +8,7 @@ const { MongoClient } = require('mongodb');
 const app = express();
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
-
+const PORT = process.env.PORT || 3000;
 connectDB();
 
 //mongoose.connect("")
@@ -100,6 +100,6 @@ app.get('/articles/add',function(req,res){
     });
 });
 
-app.listen(3000,function(){
+app.listen(PORT,function(){
     console.log('Server started on port 3000')
 });
