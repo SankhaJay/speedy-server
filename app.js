@@ -11,6 +11,8 @@ const Article = require('./api/models/article');
 const PORT = process.env.PORT || 3000;
 connectDB();
 
+const routes = require("./api/routes");
+
 //mongoose.connect("")
 
 // mongoose
@@ -49,7 +51,7 @@ connectDB();
 // };
 
 
-
+app.use("/v1", routes);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
