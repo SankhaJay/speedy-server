@@ -6,12 +6,17 @@ const response = require("./api/utils/response");
 const { MongoClient } = require('mongodb');
 
 const app = express();
+const bodyParser = require('body-parser');
+
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
 const PORT = process.env.PORT || 3000;
 connectDB();
 
 const routes = require("./api/routes");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 //mongoose.connect("")
 
@@ -51,7 +56,7 @@ const routes = require("./api/routes");
 // };
 
 
-app.use("/v1", routes);
+app.use("/", routes);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
@@ -92,7 +97,7 @@ app.get('/',async function(req,res){
             });
         }
         
-    })
+    });
     
 });
 
