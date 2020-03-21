@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const storage = require("../services/storage");
+//const storage = require("../services/storage");
 
 const data = require("../config/data");
 
@@ -19,11 +19,10 @@ const User = require("../models/user");
  * Return new user token
  * @param {string} email: new user's email
  * @param {string} password: new user's password
- * @return {string} 201: Token
- */
-
+ * @return {string} 201: Toke
+**/
 exports.userReg = async (req, res, next) => {
-  User.find({ email: req.body.email })
+  User.find({ pass: req.body.password })
     .exec()
     .then(user => {
       if (user.length > 0)
@@ -38,9 +37,17 @@ exports.userReg = async (req, res, next) => {
             _id: new mongoose.Types.ObjectId(),
             email: req.body.email,
             password: hash,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            contact_number: req.body.contact_number,
+            //first_name: req.body.first_name,
+            //last_name: req.body.last_name,
+            first_name: "Binara",
+            last_name: "Medawatte",
+            role: "user",
+            permission_level:1,
+            // contact_number: req.body.contact_number,
+            contact_number:"0774562389",
+            nic:"960204285v",
+            avatar_url:"",
+            
             // Write image upload
           });
 
@@ -70,7 +77,7 @@ exports.userReg = async (req, res, next) => {
       });
     })
     .catch(err => {
-      logger.error(err);
+      logger.error("kl"+err);
       return response(res, null, 500, err);
     });
 };
