@@ -86,14 +86,14 @@ exports.userLogin = async (req, res, next) => {
   User.find({ email: req.query.email })
     .exec()
     .then(user => {
-      if (user.length < 1) return response(res, null, 401, "Auth failed");
+      if (user.length < 1) return response(res, null, 401, "Auth Failed");
       bcrypt.compare(req.query.password, user[0].password, (err, result) => {
         if (err) {
           logger.error(err);
-          return response(res, null, 401, "Auth failed");
+          return response(res, null, 401, "Auth Failed");
         }
 
-        if (!result) return response(res, null, 401, "Auth failed");
+        if (!result) return response(res, null, 401, "Auth Failed");
 
         logger.info(
           "User",
