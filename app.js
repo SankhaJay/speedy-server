@@ -18,11 +18,18 @@ const NetworkSpeed = require('network-speed');
 const testNetworkSpeed = new NetworkSpeed();
 //
 const app = express();
+const bodyParser = require('body-parser');
+
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
 const PORT = process.env.PORT || 3000;
 const db = mongoose.connection
 connectDB();
+
+const routes = require("./api/routes");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 //mongoose.connect("")
 
@@ -61,7 +68,6 @@ connectDB();
     
 // };
 
-//
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -89,6 +95,9 @@ var upload = multer({ storage: storage })
 //     newImage.save();
 // })
 //
+
+
+app.use("/", routes);
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
@@ -130,7 +139,7 @@ app.get('/',async function(req,res){
             });
         }
         
-    })
+    });
     
 });
 
