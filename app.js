@@ -18,7 +18,6 @@ const NetworkSpeed = require('network-speed');
 const testNetworkSpeed = new NetworkSpeed();
 //
 const app = express();
-const bodyParser = require('body-parser');
 
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
@@ -205,6 +204,14 @@ app.get('/netSpeed',function(req,res){
    
   
 })
+
+// async function getLocations(){
+
+// }
+
+// app.get('/getLocations', function(req, res){
+//     getLocations();
+// })
 
 
 app.listen(PORT,function(){
