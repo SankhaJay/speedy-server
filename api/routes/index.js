@@ -2,11 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const authRoutes = require("./auth");
+const testRoutes = require("./tests");
 
 //const fineRoutes = require("./fines");
 
 
 router.use("/auth", authRoutes);
+router.use("/tests", testRoutes);
 
 //router.use("/fines", fineRoutes);
 

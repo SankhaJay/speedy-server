@@ -22,7 +22,7 @@ const User = require("../models/user");
  * @return {string} 201: Toke
 **/
 exports.userReg = async (req, res, next) => {
-  User.find({ pass: req.body.password })
+  User.find({ email: req.body.email })
     .exec()
     .then(user => {
       if (user.length > 0)
@@ -39,14 +39,11 @@ exports.userReg = async (req, res, next) => {
             password: hash,
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            // first_name: "Binara",
-            // last_name: "Medawatte",
             role: "user",
             permission_level:1,
             contact_number: req.body.contact_number,
-            //contact_number:"0774562389",
             nic:"960204285v",
-            avatar_url:"",
+            avatar_url:""
             
             // Write image upload
           });
