@@ -205,6 +205,14 @@ app.get('/netSpeed',function(req,res){
   
 })
 
+// async function getLocations(){
+
+// }
+
+// app.get('/getLocations', function(req, res){
+//     getLocations();
+// })
+
 
 app.listen(PORT,function(){
     console.log('Server started on port 3000')
