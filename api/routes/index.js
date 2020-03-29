@@ -5,10 +5,13 @@ const authRoutes = require("./auth");
 
 //const fineRoutes = require("./fines");
 
+const locations = require("./locationsRouter")
 
 router.use("/auth", authRoutes);
 
 //router.use("/fines", fineRoutes);
+
+router.use("/locationsRouter", locations);
 
 router.get("/", (req, res) => {
   // res.sendFile(`__dirname/../views/index.html`);
