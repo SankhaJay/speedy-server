@@ -109,4 +109,5 @@ app.get('/articles/add',function(req,res){
 
 app.listen(PORT,function(){
     console.log('Server started on port 3000')
+    console.log("heroku")
 });
