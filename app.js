@@ -215,5 +215,5 @@ app.get('/netSpeed',function(req,res){
 
 
 app.listen(PORT,function(){
-    console.log('Server started on port 3000')
+    console.log('Server started on port 3000');
 });
