@@ -6,11 +6,14 @@ const testRoutes = require("./tests");
 
 //const fineRoutes = require("./fines");
 
+const locations = require("./locationsRouter")
 
 router.use("/auth", authRoutes);
 router.use("/tests", testRoutes);
 
 //router.use("/fines", fineRoutes);
+
+router.use("/locationsRouter", locations);
 
 router.get("/", (req, res) => {
   // res.sendFile(`__dirname/../views/index.html`);
