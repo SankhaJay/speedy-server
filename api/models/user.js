@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    required: true
+    default: "user"
   },
   permission_level: {
     type: Number,
@@ -29,10 +29,14 @@ const userSchema = mongoose.Schema({
   avatar_url: {
     type: String
   },
+  is_verified: {
+    type: Boolean,
+    default: false
+  },
   registered_at: {
     type: Date,
     default: Date.now
-  }
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

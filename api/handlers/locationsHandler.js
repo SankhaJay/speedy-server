@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const tests = require("../models/tests");
+const tests = require("../models/test");
 
 const response = require("../utils/response");
 const Logger = require("../utils/logger");
@@ -8,7 +8,7 @@ const logger = new Logger();
 
 console.log("Handler");
 
-exports.getAll = async (req, res) => {
+exports.getAll = async (req, res) => {            
     tests.aggregate( [
       { 
         $project: {
