@@ -17,6 +17,10 @@ const testSchema = mongoose.Schema({
         default: Date.now,
         required: true
     },
+    isp: {
+        type: String,
+        required: true
+    },
 
 });
 

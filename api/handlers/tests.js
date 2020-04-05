@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 //const storage = require("../services/storage");
-
+const publicIp = require('public-ip');
+const iplocate = require('node-iplocate');
 
 const Test = require("../models/test");
 const User = require("../models/user");
@@ -36,8 +37,16 @@ exports.getByUser = async (req, res) => {
       response(res, null, 404, "No user id found");
     }
   };
-
+ 
   exports.checkSpeed = async (req, res) => {
+    var isp;
+    ip = await publicIp.v4();
+    console.log("here"+ ip);
+    await iplocate(ip).then((results) => {
+      isp = results['org'];
+      
+      });
+      console.log(isp);
     console.log(req.body.speed);
     const user = await User.findOne({email: req.body.email })
       .exec()
@@ -52,6 +61,7 @@ exports.getByUser = async (req, res) => {
       user_id:user,
       speed: req.body.speed,
       location: req.body.location,
+      isp:isp
     });
   
     test
