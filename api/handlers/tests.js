@@ -40,10 +40,11 @@ exports.getByUser = async (req, res) => {
  
   exports.checkSpeed = async (req, res) => {
     var isp;
-    ip = await publicIp.v4();
+    ip = req.body.ip;
     console.log("here"+ ip);
     await iplocate(ip).then((results) => {
       console.log(results);
+      logger.info(results)
       isp = results['org'];
       
       });
