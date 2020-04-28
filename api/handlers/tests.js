@@ -43,6 +43,7 @@ exports.getByUser = async (req, res) => {
     ip = await publicIp.v4();
     console.log("here"+ ip);
     await iplocate(ip).then((results) => {
+      console.log(results);
       isp = results['org'];
       
       });
@@ -63,7 +64,9 @@ exports.getByUser = async (req, res) => {
       location: req.body.location,
       isp:isp
     });
-  
+    data = {
+      isp: isp
+    };
     test
       .save()
       .then(fine => {
@@ -74,7 +77,7 @@ exports.getByUser = async (req, res) => {
         //   "A fine has been issued for this mobile number. Please use the FPAY driver application to pay the fine"
         // );
   
-        return response(res, null, 201);
+        return response(res, data, 201);
       })
       .catch(err => {
         return response(res, null, 500, err);
