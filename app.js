@@ -60,46 +60,46 @@ app.use("/", routes);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
-app.get('/',async function(req,res){
-    //res.send('Hello World');
+// app.get('/',async function(req,res){
+//     //res.send('Hello World');
     
-    // var articles = [
-    //     {
-    //         id:1,
-    //         title:'Article One',
-    //         author:'Sankha Jayalath',
-    //         body:'This is article one'
+//     // var articles = [
+//     //     {
+//     //         id:1,
+//     //         title:'Article One',
+//     //         author:'Sankha Jayalath',
+//     //         body:'This is article one'
 
-    //     },
-    //     {
-    //         id:2,
-    //         title:'Article Two',
-    //         author:'Shanika Waidyarathne',
-    //         body:'This is article two'
+//     //     },
+//     //     {
+//     //         id:2,
+//     //         title:'Article Two',
+//     //         author:'Shanika Waidyarathne',
+//     //         body:'This is article two'
 
-    //     },
-    //     {
-    //         id:3,
-    //         title:'Article Three',
-    //         author:'Sameera Perera',
-    //         body:'This is article three'
+//     //     },
+//     //     {
+//     //         id:3,
+//     //         title:'Article Three',
+//     //         author:'Sameera Perera',
+//     //         body:'This is article three'
 
-    //     }
-    // ]
-    Article.find({},function(err,articlesss){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render('index',{
-                title:'Simple se',
-                articles:articlesss
-            });
-        }
+//     //     }
+//     // ]
+//     Article.find({},function(err,articlesss){
+//         if(err){
+//             console.log(err);
+//         }
+//         else{
+//             res.render('index',{
+//                 title:'Simple se',
+//                 articles:articlesss
+//             });
+//         }
         
-    });
+//     });
     
-});
+// });
 
 app.get('/articles/add',function(req,res){
     res.render('add_article',{
