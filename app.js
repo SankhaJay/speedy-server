@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 connectDB();
 
 const routes = require("./api/routes");
@@ -108,7 +108,7 @@ app.get('/articles/add',function(req,res){
 });
 
 app.listen(PORT,function(){
-    console.log('Server started on port 3000')
+    console.log('Server started on port 8080')
     console.log("heroku")
 });
 
