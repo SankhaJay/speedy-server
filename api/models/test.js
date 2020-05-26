@@ -19,7 +19,6 @@ const testSchema = mongoose.Schema({
     },
     isp: {
         type: String,
-        required: true
     },
 
 });

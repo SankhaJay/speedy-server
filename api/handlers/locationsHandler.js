@@ -15,7 +15,8 @@ exports.getAll = async (req, res) => {
           "speed": 1, 
           "name": "$location.name",
           "lat": "$location.latitude",
-          "lng": "$location.longitude"
+          "lng": "$location.longitude",
+          "isp": 1
         } 
       }
     ])

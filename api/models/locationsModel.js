@@ -15,6 +15,10 @@ const locationsSchema = mongoose.Schema({
         default: Date.now,
         required: true
     },
+    isp: {
+        type: String,
+        required: true
+    },
 
 });
 

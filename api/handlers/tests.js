@@ -46,6 +46,9 @@ exports.getByUser = async (req, res) => {
       console.log(results);
       logger.info(results)
       isp = results['org'];
+      if(isp == "IS Group, No:108, W A D Ramanayake Mawatha"){
+        isp = "Mobitel Pvt Ltd"
+      }
       
       });
       console.log(isp);
