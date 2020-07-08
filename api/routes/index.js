@@ -16,19 +16,19 @@ router.use("/tests", testRoutes);
 router.use("/locationsRouter", locations);
 
 router.get("/", (req, res) => {
-  // res.sendFile(`__dirname/../views/index.html`);
-  Article.find({},function(err,articlesss){
-    if(err){
-        console.log(err);
-    }
-    else{
-        res.render('index',{
-            title:'Simple se',
-            articles:articlesss
-        });
-    }
+  res.send('homepage');
+//   Article.find({},function(err,articlesss){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         res.render('index',{
+//             title:'Simple se',
+//             articles:articlesss
+//         });
+//     }
     
-});
+// });
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 const URI = "mongodb+srv://sankhaJ:sankha@appledore-nbptw.mongodb.net/test?retryWrites=true&w=majority";    
 const Article = require('./api/models/article');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 connectDB();
 
 const routes = require("./api/routes");
@@ -60,46 +60,46 @@ app.use("/", routes);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
-app.get('/',async function(req,res){
-    //res.send('Hello World');
+// app.get('/',async function(req,res){
+//     //res.send('Hello World');
     
-    // var articles = [
-    //     {
-    //         id:1,
-    //         title:'Article One',
-    //         author:'Sankha Jayalath',
-    //         body:'This is article one'
+//     // var articles = [
+//     //     {
+//     //         id:1,
+//     //         title:'Article One',
+//     //         author:'Sankha Jayalath',
+//     //         body:'This is article one'
 
-    //     },
-    //     {
-    //         id:2,
-    //         title:'Article Two',
-    //         author:'Shanika Waidyarathne',
-    //         body:'This is article two'
+//     //     },
+//     //     {
+//     //         id:2,
+//     //         title:'Article Two',
+//     //         author:'Shanika Waidyarathne',
+//     //         body:'This is article two'
 
-    //     },
-    //     {
-    //         id:3,
-    //         title:'Article Three',
-    //         author:'Sameera Perera',
-    //         body:'This is article three'
+//     //     },
+//     //     {
+//     //         id:3,
+//     //         title:'Article Three',
+//     //         author:'Sameera Perera',
+//     //         body:'This is article three'
 
-    //     }
-    // ]
-    Article.find({},function(err,articlesss){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render('index',{
-                title:'Simple se',
-                articles:articlesss
-            });
-        }
+//     //     }
+//     // ]
+//     Article.find({},function(err,articlesss){
+//         if(err){
+//             console.log(err);
+//         }
+//         else{
+//             res.render('index',{
+//                 title:'Simple se',
+//                 articles:articlesss
+//             });
+//         }
         
-    });
+//     });
     
-});
+// });
 
 app.get('/articles/add',function(req,res){
     res.render('add_article',{
@@ -108,7 +108,7 @@ app.get('/articles/add',function(req,res){
 });
 
 app.listen(PORT,function(){
-    console.log('Server started on port 3000')
+    console.log('Server started on port 8080')
     console.log("heroku")
 });
 

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 //const storage = require("../services/storage");
-
+const publicIp = require('public-ip');
+const iplocate = require('node-iplocate');
 
 const Test = require("../models/test");
 const User = require("../models/user");
@@ -36,8 +37,21 @@ exports.getByUser = async (req, res) => {
       response(res, null, 404, "No user id found");
     }
   };
-
+ 
   exports.checkSpeed = async (req, res) => {
+    var isp;
+    ip = req.body.ip;
+    console.log("here"+ ip);
+    await iplocate(ip).then((results) => {
+      console.log(results);
+      logger.info(results)
+      isp = results['org'];
+      if(isp == "IS Group, No:108, W A D Ramanayake Mawatha"){
+        isp = "Mobitel Pvt Ltd"
+      }
+      
+      });
+      console.log(isp);
     console.log(req.body.speed);
     const user = await User.findOne({email: req.body.email })
       .exec()
@@ -52,8 +66,11 @@ exports.getByUser = async (req, res) => {
       user_id:user,
       speed: req.body.speed,
       location: req.body.location,
+      isp:isp
     });
-  
+    data = {
+      isp: isp
+    };
     test
       .save()
       .then(fine => {
@@ -64,7 +81,7 @@ exports.getByUser = async (req, res) => {
         //   "A fine has been issued for this mobile number. Please use the FPAY driver application to pay the fine"
         // );
   
-        return response(res, null, 201);
+        return response(res, data, 201);
       })
       .catch(err => {
         return response(res, null, 500, err);
